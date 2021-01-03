@@ -24,7 +24,8 @@ class UserService: IUserService {
     @Throws(Exception::class)
     override fun create(user: UserCreateRequest): User {
         val u: User = this.convert(user);
-        if(Objects.nonNull(userRepository.findFirstByName(u.name))) {
+        val userExists: User? = userRepository.findFirstByName(u.name);
+        if(userExists != null) {
             throw CustomException("This name already exists!", "You can't create a user with the same name", "Try another name!");
         }
         return userRepository.save(u);

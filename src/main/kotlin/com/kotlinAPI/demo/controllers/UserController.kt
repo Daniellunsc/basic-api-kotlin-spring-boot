@@ -1,5 +1,6 @@
 package com.kotlinAPI.demo.controllers
 
+import com.kotlinAPI.demo.`interface`.IUserService
 import com.kotlinAPI.demo.converters.UserCreateRequest
 import com.kotlinAPI.demo.domain.User
 import com.kotlinAPI.demo.service.UserService
@@ -13,8 +14,7 @@ import kotlin.jvm.Throws
 class UserController {
 
     @Autowired
-    lateinit var userService: UserService;
-
+    lateinit var userService: IUserService;
 
     @GetMapping("/users")
     fun listAll(): List<User>? {
